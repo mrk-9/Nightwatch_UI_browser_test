@@ -1,0 +1,58 @@
+{
+    "src_folders": [
+      "tests"
+    ],
+    "custom_commands_path": ["./commands"],
+    "custom_assertions_path": ["./assertions", "node_modules/nightwatch-custom-commands-assertions/js/assertions"],
+    "page_objects_path": "./pageobjects",
+    "globals_path": "./src/globalModules.js",
+
+    "selenium" : {
+        "start_process" : true,
+        "server_path" : "./lib/selenium-server-standalone-3.141.59.jar",
+        "log_path" : "",
+        "port" : 4444,
+        "cli_args" : {
+          "webdriver.chrome.driver" : "./lib/chromedriver.exe",
+          "webdriver.gecko.driver" : "./lib/geckodriver.exe",
+          "webdriver.edge.driver" : "./lib/MicrosoftWebDriver16.exe",
+          "webdriver.ie.driver": "./lib/IEDriverServer.exe"
+        }
+      },
+
+    "test_settings": {
+      "default": {
+        "silent": true,
+        "screenshots": {
+          "enabled": true,
+          "path": "./tests_output",
+          "on_failure": true,
+          "on_error": true
+        },
+        "desiredCapabilities": {
+          "browserName": "chrome"
+        },
+        "globals": {
+          "userLogin": {
+            "userEmail": "hr@example.com",
+            "userPassword": "HR-PASSWORD-GOES-HERE"
+          },
+          "managerLogin": {
+            "userEmail":"manager@example.com",
+            "userPassword": "MANAGER-PASSWORD-GOES-HERE"
+          }
+        }
+      },
+
+      "localhost" : {
+        "globals": {
+          "baseUrl": "http://localhost:3000"
+        }
+      },
+      "prestaging" : {
+        "globals": {
+          "baseUrl": "https://tp.prestaging.underpaid.com"
+        }
+      }
+    }
+  }
